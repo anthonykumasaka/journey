@@ -2,15 +2,17 @@ const mongoose = require('mongoose');
 const express = require("express"); 
 const app = express(); 
 const db = require('./config/keys').mongoURI; 
+const users = require("./routes/api/users");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
+app.use('/api/users', users); 
 
 app.get("/", (req, res) => {
-  res.send("Hello World Ear error is for already running"); 
+  res.send("Hello Mr Kumasaka How is your backend?"); 
 }); 
 
 const port = process.env.PORT || 5000; 
